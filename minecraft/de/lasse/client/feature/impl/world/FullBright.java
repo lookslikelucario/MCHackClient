@@ -1,4 +1,4 @@
-package de.lasse.client.feature.impl;
+package de.lasse.client.feature.impl.world;
 
 import de.lasse.client.feature.Feature;
 import net.minecraft.client.settings.GameSettings;

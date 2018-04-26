@@ -1,4 +1,4 @@
-package de.lasse.client.feature.impl;
+package de.lasse.client.feature.impl.player;
 
 import com.darkmagician6.eventapi.EventTarget;
 import de.lasse.client.event.EventUpdate;
