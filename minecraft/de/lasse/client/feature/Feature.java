@@ -63,7 +63,14 @@ public class Feature {
         }
     }
 
-
+    public static Feature getFeatureByClass(Class<? extends Feature> clazz) {
+        for (Feature feature : features) {
+            if (feature.getClass() == clazz) {
+                return feature;
+            }
+        }
+        return null;
+    }
 
 
 }
