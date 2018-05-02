@@ -10,7 +10,7 @@ public class Client {
 
     public static final String NAME = "Client"; // Until I find a better name
 
-    private Client client;
+    private static Client client;
 
     private FeatureFactory featureFactory;
     private FeatureRenderer featureRenderer;
@@ -34,7 +34,7 @@ public class Client {
 
     }
 
-    public Client getClient() {
+    public static Client getClient() {
         return client;
     }
 
