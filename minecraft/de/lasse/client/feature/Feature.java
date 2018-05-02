@@ -8,6 +8,7 @@ import java.util.ArrayList;
 public class Feature {
 
     public static ArrayList<Feature> features = new ArrayList<>();
+    public static ArrayList<Feature> activeFeatures = new ArrayList<>();
     public Minecraft mc = Minecraft.getMinecraft();
     private String featureName;
     private int featureKeyBind;
@@ -23,10 +24,12 @@ public class Feature {
 
     public void onEnable() {
         EventManager.register(this);
+        activeFeatures.add(this);
     }
 
     public void onDisable() {
         EventManager.unregister(this);
+        activeFeatures.remove(this);
     }
 
     public void toggle() {

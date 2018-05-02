@@ -17,12 +17,10 @@ public class FeatureRenderer {
     public void renderFeatures(EventRender eventRender) {
         ScaledResolution resolution = new ScaledResolution(Minecraft.getMinecraft());
         int y = 0;
-        for (Feature feature : Feature.features) {
-            if (feature.isFeatureEnabled()) {
-                int x = resolution.getScaledWidth() - Minecraft.getMinecraft().fontRendererObj.getStringWidth(feature.getFeatureName()) - 5;
-                y += 10;
-                renderFeature(feature, x, y);
-            }
+        for (Feature feature : Feature.activeFeatures) {
+            int x = resolution.getScaledWidth() - Minecraft.getMinecraft().fontRendererObj.getStringWidth(feature.getFeatureName()) - 5;
+            y += 10;
+            renderFeature(feature, x, y);
         }
     }
 
