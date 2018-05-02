@@ -3,12 +3,11 @@ package de.lasse.client.feature.impl.player;
 import com.darkmagician6.eventapi.EventTarget;
 import de.lasse.client.event.EventUpdate;
 import de.lasse.client.feature.Feature;
-import org.lwjgl.input.Keyboard;
 
 public class Sprint extends Feature {
 
     public Sprint() {
-        super("Sprint", Keyboard.KEY_P);
+        super("Sprint", -1);
     }
 
     @EventTarget

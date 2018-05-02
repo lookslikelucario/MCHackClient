@@ -2,14 +2,13 @@ package de.lasse.client.feature.impl.world;
 
 import de.lasse.client.feature.Feature;
 import net.minecraft.client.settings.GameSettings;
-import org.lwjgl.input.Keyboard;
 
 public class FullBright extends Feature {
 
     private float userGamma;
 
     public FullBright() {
-        super("FullBright", Keyboard.KEY_O);
+        super("FullBright", -1);
     }
 
     @Override
