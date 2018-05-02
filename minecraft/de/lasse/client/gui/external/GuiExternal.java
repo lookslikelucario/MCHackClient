@@ -16,9 +16,6 @@ public class GuiExternal {
         /*
             TODO: Make a thread for this gui to "destroy" the instance for checking whether the gui is already "open"
             TODO: Right now the user is able to open the gui more than only ones
-
-            TODO: Replace button with radio buttons or slt...
-            TODO: Display active features as active
          */
 
         /*
@@ -66,7 +63,11 @@ public class GuiExternal {
             /*
                 Make a button for each feature
              */
-            JButton featureButton = new JButton(Feature.features.get(i).getFeatureName());
+            JToggleButton featureButton = new JToggleButton(Feature.features.get(i).getFeatureName());
+
+            if(Feature.features.get(i).isFeatureEnabled()) {
+                featureButton.doClick();
+            }
 
             /*
                Make a effectively final temp variable
