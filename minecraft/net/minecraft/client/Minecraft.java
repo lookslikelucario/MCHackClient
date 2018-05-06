@@ -274,7 +274,7 @@ public class Minecraft implements IThreadListener, ISnooperInfo
     public Entity pointedEntity;
     public ParticleManager effectRenderer;
     private SearchTreeManager field_193995_ae = new SearchTreeManager();
-    private final Session session;
+    public Session session;
     private boolean isGamePaused;
     private float field_193996_ah;
 
