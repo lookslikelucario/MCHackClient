@@ -75,5 +75,12 @@ public class Feature {
         return null;
     }
 
-
+    public static Feature getFeatureByName(String featureName) {
+        for (Feature feature : features) {
+            if (feature.getFeatureName().equals(featureName)) {
+                return feature;
+            }
+        }
+        return null;
+    }
 }

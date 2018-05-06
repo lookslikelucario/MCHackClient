@@ -1,12 +1,20 @@
 package de.lasse.client.feature;
 
+import com.darkmagician6.eventapi.EventManager;
+import com.darkmagician6.eventapi.EventTarget;
+import de.lasse.client.event.EventStart;
 import org.reflections.Reflections;
 
 import java.util.Set;
 
 public class FeatureFactory {
 
-    public void initAllFeatures() {
+    public FeatureFactory() {
+        EventManager.register(this);
+    }
+
+    @EventTarget
+    public void initAllFeatures(EventStart eventStart) {
         /*
             Instead of making a new instance of each feature manually,
             we scan the hole "features" package where all features are located at,

@@ -45,6 +45,7 @@ import javax.imageio.ImageIO;
 
 import de.lasse.client.Client;
 import de.lasse.client.event.EventOnKeyInput;
+import de.lasse.client.event.EventShutDown;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -1512,6 +1513,7 @@ public class Minecraft implements IThreadListener, ISnooperInfo
      */
     public void shutdown()
     {
+        EventManager.call(new EventShutDown());
         this.running = false;
     }
 

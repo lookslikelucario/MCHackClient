@@ -56,7 +56,7 @@ public class GuiExternal {
             /*
                 Blacklist Gui Feature
              */
-            if(Feature.features.get(i).getClass() == Gui.class) {
+            if (Feature.features.get(i).getClass() == Gui.class) {
                 continue;
             }
 
@@ -65,7 +65,7 @@ public class GuiExternal {
              */
             JToggleButton featureButton = new JToggleButton(Feature.features.get(i).getFeatureName());
 
-            if(Feature.features.get(i).isFeatureEnabled()) {
+            if (Feature.features.get(i).isFeatureEnabled()) {
                 featureButton.doClick();
             }
 
