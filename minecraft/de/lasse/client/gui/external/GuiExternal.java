@@ -5,9 +5,13 @@ import de.lasse.client.feature.impl.gui.Gui;
 
 import javax.swing.*;
 import java.awt.*;
+
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.Objects;
+
+import org.lwjgl.input.Keyboard;
+
 
 public class GuiExternal {
 
@@ -65,6 +69,13 @@ public class GuiExternal {
              */
             JToggleButton featureButton = new JToggleButton(Feature.features.get(i).getFeatureName());
 
+            // TODO: User should press any key to assign this key to a feature
+            // For now only allow the alphabet
+            String[] validKeyBinds = {"a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"};
+
+            JComboBox<String> featureKeyBinds = new JComboBox<>(validKeyBinds);
+
+
             if (Feature.features.get(i).isFeatureEnabled()) {
                 featureButton.doClick();
             }
@@ -78,11 +89,18 @@ public class GuiExternal {
                 Apply an action listener for each button
              */
             featureButton.addActionListener(e -> Feature.features.get(finalI).toggle());
+            featureKeyBinds.addActionListener(e -> {
+                int keybind = Keyboard.getKeyIndex(Objects.requireNonNull(featureKeyBinds.getSelectedItem()).toString().toUpperCase());
+                Feature.features.get(finalI).setFeatureKeyBind(keybind);
+                System.out.println(Feature.features.get(finalI).getFeatureName() + " was bound to " + keybind);
+            });
+
 
             /*
-                Add the current button to the frame
+                Add the current button and keybind to the frame
              */
             guiFrame.add(featureButton);
+            guiFrame.add(featureKeyBinds);
         }
 
         /*

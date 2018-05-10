@@ -27,6 +27,13 @@ public class InputManager {
     @EventTarget
     public void onKeyInput(EventOnKeyInput eventOnKeyInput) {
         int eventKey = Keyboard.getEventKey();
+
+        // TODO: We don't need to check for changed keybinds on every key input
+        int i = 0;
+        for (Feature feature : Feature.features) {
+            keyBinds[i] = feature.getFeatureKeyBind();
+            i++;
+        }
         // TODO: Clean this up! There might be some unnecessary checks
         for (int keyBind : keyBinds) {
             if (eventKey == keyBind) {
