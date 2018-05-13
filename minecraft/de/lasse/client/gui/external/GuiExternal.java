@@ -55,9 +55,7 @@ public class GuiExternal {
         /*
             Iterate through all features
          */
-        for (int i = 0; i < features; i++) {
-            
-            Feature feature = Feature.features.get(i);
+        for (Feature feature : Feature.features) {
             
             /*
                 Blacklist Gui Feature
