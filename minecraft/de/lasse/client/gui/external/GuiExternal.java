@@ -56,18 +56,20 @@ public class GuiExternal {
             Iterate through all features
          */
         for (int i = 0; i < features; i++) {
-
+            
+            Feature feature = Feature.features.get(i);
+            
             /*
                 Blacklist Gui Feature
              */
-            if (Feature.features.get(i).getClass() == Gui.class) {
+            if (feature.getClass() == Gui.class) {
                 continue;
             }
 
             /*
                 Make a button for each feature
              */
-            JToggleButton featureButton = new JToggleButton(Feature.features.get(i).getFeatureName());
+            JToggleButton featureButton = new JToggleButton(feature.getFeatureName());
 
             // TODO: User should press any key to assign this key to a feature
             // For now only allow the alphabet
@@ -76,26 +78,21 @@ public class GuiExternal {
             JComboBox<String> featureKeyBinds = new JComboBox<>(validKeyBinds);
 
 
-            if (Feature.features.get(i).isFeatureEnabled()) {
+            if (feature.isFeatureEnabled()) {
                 featureButton.doClick();
             }
 
-            featureKeyBinds.setSelectedItem(Keyboard.getKeyName(Feature.features.get(i).getFeatureKeyBind()).toLowerCase());
+            featureKeyBinds.setSelectedItem(Keyboard.getKeyName(feature.getFeatureKeyBind()).toLowerCase());
 
-
-            /*
-               Make a effectively final temp variable
-             */
-            int finalI = i;
 
             /*
                 Apply an action listener for each button
              */
-            featureButton.addActionListener(e -> Feature.features.get(finalI).toggle());
+            featureButton.addActionListener(e -> feature.toggle());
             featureKeyBinds.addActionListener(e -> {
                 int keybind = Keyboard.getKeyIndex(Objects.requireNonNull(featureKeyBinds.getSelectedItem()).toString().toUpperCase());
-                Feature.features.get(finalI).setFeatureKeyBind(keybind);
-                System.out.println(Feature.features.get(finalI).getFeatureName() + " was bound to " + keybind);
+                feature.setFeatureKeyBind(keybind);
+                System.out.println(feature.getFeatureName() + " was bound to " + keybind);
             });
 
 
