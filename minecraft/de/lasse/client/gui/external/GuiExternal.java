@@ -80,6 +80,9 @@ public class GuiExternal {
                 featureButton.doClick();
             }
 
+            featureKeyBinds.setSelectedItem(Keyboard.getKeyName(Feature.features.get(i).getFeatureKeyBind()).toLowerCase());
+
+
             /*
                Make a effectively final temp variable
              */
