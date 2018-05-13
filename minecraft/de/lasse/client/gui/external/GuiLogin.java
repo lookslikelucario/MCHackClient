@@ -6,6 +6,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Arrays;
 
 public class GuiLogin {
 
@@ -41,7 +42,7 @@ public class GuiLogin {
         submitButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new AltLoginThread(emailField.getText(), passField.getText()).run();
+                new AltLoginThread(emailField.getText(), new String(passField.getPassword())).run();
             }
         });
 
