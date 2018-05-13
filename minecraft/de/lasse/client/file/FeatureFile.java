@@ -7,6 +7,10 @@ import de.lasse.client.Client;
 import de.lasse.client.event.EventShutDown;
 import de.lasse.client.event.EventStart;
 import de.lasse.client.feature.Feature;
+import de.lasse.client.feature.impl.player.Sprint;
+import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.LineIterator;
+import org.lwjgl.input.Keyboard;
 
 import java.io.*;
 
@@ -28,11 +32,11 @@ public class FeatureFile {
         }
     }
 
-    private void saveFeatureToggleState() {
+    private void saveFeatureState() {
         try {
             PrintWriter printWriter = new PrintWriter(new FileWriter(featureFile));
             for (Feature feature : Feature.features) {
-                printWriter.println(feature.getFeatureName() + ":" + String.valueOf(feature.isFeatureEnabled()));
+                printWriter.println(feature.getFeatureName() + ":" + String.valueOf(feature.isFeatureEnabled()) + ":" + feature.getFeatureKeyBind());
             }
             printWriter.close();
         } catch (IOException e) {
@@ -40,28 +44,36 @@ public class FeatureFile {
         }
     }
 
-    private void readFeatureToggleState() {
+    private void readFeatureState() {
+        LineIterator lineIterator = null;
         try {
-            BufferedReader bufferedReader = new BufferedReader(new FileReader(featureFile));
-            for (String s; ( s = bufferedReader.readLine() ) != null; ) {
-                String[] splitted = s.split(":");
-                Feature feature = Feature.getFeatureByName(splitted[0]);
-                assert feature != null;
-                feature.setEnabled(Boolean.valueOf(splitted[1]));
-            }
-            bufferedReader.close();
+            lineIterator = FileUtils.lineIterator(featureFile);
         } catch (IOException e) {
             e.printStackTrace();
+        }
+        try {
+            assert lineIterator != null;
+            while (lineIterator.hasNext()) {
+                Feature feature;
+                String[] splitted = lineIterator.next().split(":");
+                feature = Feature.getFeatureByName(splitted[0]);
+                assert feature != null;
+                feature.setFeatureKeyBind(Integer.parseInt(splitted[2]));
+                feature.setEnabled(Boolean.valueOf(splitted[1]));
+            }
+        } finally {
+            assert lineIterator != null;
+            lineIterator.close();
         }
     }
 
     @EventTarget
     public void onShutDown(EventShutDown eventShutDown) {
-        saveFeatureToggleState();
+        saveFeatureState();
     }
 
     @EventTarget(Priority.LOW)
     public void onStart(EventStart eventStart) {
-        readFeatureToggleState();
+        readFeatureState();
     }
 }

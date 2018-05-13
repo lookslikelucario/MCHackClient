@@ -36,10 +36,9 @@ public class Client {
             clientDir.mkdirs();
         }
 
-        new FeatureFile();
-
-
         featureFactory = new FeatureFactory();
+
+        new FeatureFile();
 
         featureRenderer = new FeatureRenderer();
 

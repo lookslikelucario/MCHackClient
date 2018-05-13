@@ -22,6 +22,16 @@ public class Feature {
         System.out.println("Registered feature: " + name);
     }
 
+    /*
+        Use this constructor if we don't have any keybind we want to assign to the feature
+     */
+    public Feature(String name) {
+        featureName = name;
+
+        features.add(this);
+        System.out.println("Registered feature: " + name);
+    }
+
     public void onEnable() {
         EventManager.register(this);
         activeFeatures.add(this);

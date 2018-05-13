@@ -7,7 +7,7 @@ import de.lasse.client.feature.Feature;
 public class Sprint extends Feature {
 
     public Sprint() {
-        super("Sprint", -1);
+        super("Sprint");
     }
 
     @EventTarget

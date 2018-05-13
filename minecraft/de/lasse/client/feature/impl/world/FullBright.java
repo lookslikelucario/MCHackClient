@@ -8,7 +8,7 @@ public class FullBright extends Feature {
     private float userGamma;
 
     public FullBright() {
-        super("FullBright", -1);
+        super("FullBright");
     }
 
     @Override
