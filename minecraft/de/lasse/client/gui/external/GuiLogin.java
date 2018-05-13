@@ -39,12 +39,7 @@ public class GuiLogin {
         JButton submitButton = new JButton("Submit");
         submitButton.setBounds(55, 150, 112, 30);
 
-        submitButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                new AltLoginThread(emailField.getText(), new String(passField.getPassword())).run();
-            }
-        });
+        submitButton.addActionListener(e -> new AltLoginThread(emailField.getText(), new String(passField.getPassword())).run());
 
         /*
             Add components to frame
