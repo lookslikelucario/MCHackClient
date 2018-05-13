@@ -26,7 +26,7 @@ public class GuiLogin {
             Email and pass field
          */
         JTextField emailField = new JTextField("Email");
-        JTextField passField = new JTextField("Password");
+        JPasswordField passField = new JPasswordField("Password");
 
         emailField.setBounds(10, 50, 200, 30);
         passField.setBounds(10, 90, 200, 30);
