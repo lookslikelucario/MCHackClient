@@ -4,6 +4,7 @@ import com.darkmagician6.eventapi.EventManager;
 import de.lasse.client.event.EventStart;
 import de.lasse.client.feature.FeatureFactory;
 import de.lasse.client.file.FeatureFile;
+import de.lasse.client.file.GuiFile;
 import de.lasse.client.management.InputManager;
 import de.lasse.client.render.ClientRenderer;
 import de.lasse.client.render.FeatureRenderer;
@@ -39,6 +40,7 @@ public class Client {
         featureFactory = new FeatureFactory();
 
         new FeatureFile();
+        new GuiFile();
 
         featureRenderer = new FeatureRenderer();
 
@@ -50,8 +52,6 @@ public class Client {
 
         /* Set display title */
         Display.setTitle(NAME);
-
-
     }
 
     public static Client getClient() {

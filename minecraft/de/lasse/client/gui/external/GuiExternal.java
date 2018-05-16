@@ -15,6 +15,10 @@ import org.lwjgl.input.Keyboard;
 
 public class GuiExternal {
 
+    private static JFrame guiFrame;
+
+    public static int savedPosX, savedPosY = 0;
+
     public GuiExternal() {
 
         /*
@@ -25,7 +29,12 @@ public class GuiExternal {
         /*
             Create gui frame
          */
-        JFrame guiFrame = new JFrame();
+        guiFrame = new JFrame();
+
+        /*
+            Set position
+         */
+        guiFrame.setLocation(savedPosX, savedPosY);
 
         /*
             Stores number of features for iterating through them
@@ -127,5 +136,9 @@ public class GuiExternal {
             Finally show frame
          */
         guiFrame.setVisible(true);
+    }
+
+    public static JFrame getGuiFrame() {
+        return guiFrame;
     }
 }
