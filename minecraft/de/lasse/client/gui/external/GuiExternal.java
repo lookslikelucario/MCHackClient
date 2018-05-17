@@ -2,15 +2,13 @@ package de.lasse.client.gui.external;
 
 import de.lasse.client.feature.Feature;
 import de.lasse.client.feature.impl.gui.Gui;
+import org.lwjgl.input.Keyboard;
 
 import javax.swing.*;
 import java.awt.*;
-
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.Objects;
-
-import org.lwjgl.input.Keyboard;
 
 
 public class GuiExternal {

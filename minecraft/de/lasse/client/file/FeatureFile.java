@@ -7,12 +7,13 @@ import de.lasse.client.Client;
 import de.lasse.client.event.EventShutDown;
 import de.lasse.client.event.EventStart;
 import de.lasse.client.feature.Feature;
-import de.lasse.client.feature.impl.player.Sprint;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.LineIterator;
-import org.lwjgl.input.Keyboard;
 
-import java.io.*;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 
 public class FeatureFile {
 
