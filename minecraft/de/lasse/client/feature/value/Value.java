@@ -5,7 +5,7 @@ public class Value {
     private ValueType valueType;
     private String valueName;
 
-    public Value(String name, ValueType valueType) {
+    protected Value(String name, ValueType valueType) {
         this.valueType = valueType;
         this.valueName = name;
     }

@@ -3,7 +3,7 @@ package de.lasse.client.feature.value.impl;
 import de.lasse.client.feature.value.Value;
 import de.lasse.client.feature.value.ValueType;
 
-public class ValueBoolean extends Value {
+class ValueBoolean extends Value {
 
     private boolean isEnabled;
 

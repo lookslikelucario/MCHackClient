@@ -9,7 +9,7 @@ public class Feature {
 
     public static ArrayList<Feature> features = new ArrayList<>();
     public static ArrayList<Feature> activeFeatures = new ArrayList<>();
-    public Minecraft mc = Minecraft.getMinecraft();
+    protected Minecraft mc = Minecraft.getMinecraft();
     private String featureName;
     private int featureKeyBind;
     private boolean featureEnabled;
