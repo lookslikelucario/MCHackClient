@@ -19,12 +19,12 @@ public class Client {
 
     private static Client client;
 
-    private File clientDir;
+    private final File clientDir;
 
-    private FeatureFactory featureFactory;
-    private FeatureRenderer featureRenderer;
-    private InputManager inputManager;
-    private ClientRenderer clientRenderer;
+    private final FeatureFactory featureFactory;
+    private final FeatureRenderer featureRenderer;
+    private final InputManager inputManager;
+    private final ClientRenderer clientRenderer;
 
     public Client() {
 

@@ -2,8 +2,8 @@ package de.lasse.client.feature.value;
 
 public class Value {
 
-    private ValueType valueType;
-    private String valueName;
+    private final ValueType valueType;
+    private final String valueName;
 
     protected Value(String name, ValueType valueType) {
         this.valueType = valueType;

@@ -12,7 +12,7 @@ import java.io.*;
 
 public class GuiFile {
 
-    private File guiFile;
+    private final File guiFile;
 
     public GuiFile() {
         EventManager.register(this, EventStart.class);

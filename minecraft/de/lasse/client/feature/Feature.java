@@ -7,9 +7,9 @@ import java.util.ArrayList;
 
 public class Feature {
 
-    public static ArrayList<Feature> features = new ArrayList<>();
-    public static ArrayList<Feature> activeFeatures = new ArrayList<>();
-    protected Minecraft mc = Minecraft.getMinecraft();
+    public static final ArrayList<Feature> features = new ArrayList<>();
+    public static final ArrayList<Feature> activeFeatures = new ArrayList<>();
+    protected final Minecraft mc = Minecraft.getMinecraft();
     private String featureName;
     private int featureKeyBind;
     private boolean featureEnabled;

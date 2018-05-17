@@ -10,7 +10,7 @@ import java.util.Arrays;
 
 public class InputManager {
 
-    private int[] keyBinds;
+    private final int[] keyBinds;
 
     public InputManager() {
         int i = 0;

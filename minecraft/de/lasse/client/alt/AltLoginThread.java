@@ -12,7 +12,8 @@ import java.net.Proxy;
 
 public class AltLoginThread implements Runnable {
 
-    private String user, pass;
+    private final String user;
+    private final String pass;
 
     public AltLoginThread(String user, String pass) {
         this.user = user;

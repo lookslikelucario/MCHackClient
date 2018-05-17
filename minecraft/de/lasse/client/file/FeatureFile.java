@@ -17,7 +17,7 @@ import java.io.PrintWriter;
 
 public class FeatureFile {
 
-    private File featureFile;
+    private final File featureFile;
 
     public FeatureFile() {
         EventManager.register(this, EventStart.class);
