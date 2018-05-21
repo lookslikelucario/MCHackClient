@@ -1,6 +1,7 @@
 package de.lasse.client.feature;
 
 import com.darkmagician6.eventapi.EventManager;
+import de.lasse.client.feature.value.Value;
 import net.minecraft.client.Minecraft;
 
 import java.util.ArrayList;
@@ -9,6 +10,8 @@ public class Feature {
 
     public static final ArrayList<Feature> features = new ArrayList<>();
     public static final ArrayList<Feature> activeFeatures = new ArrayList<>();
+    public ArrayList<Value> featureValues = new ArrayList<>();
+
     protected final Minecraft mc = Minecraft.getMinecraft();
     private String featureName;
     private int featureKeyBind;
@@ -44,6 +47,10 @@ public class Feature {
 
     public void toggle() {
         setEnabled(!featureEnabled);
+    }
+
+    public void addValue(Value value) {
+        featureValues.add(value);
     }
 
     public String getFeatureName() {

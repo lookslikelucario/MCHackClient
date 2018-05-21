@@ -3,7 +3,7 @@ package de.lasse.client.feature.value.impl;
 import de.lasse.client.feature.value.Value;
 import de.lasse.client.feature.value.ValueType;
 
-class ValueNumber extends Value {
+public class ValueNumber extends Value {
 
     // TODO: Allow floating values
     private int currentValue;

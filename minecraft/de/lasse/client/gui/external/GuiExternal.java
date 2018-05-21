@@ -6,6 +6,8 @@ import org.lwjgl.input.Keyboard;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.Objects;
@@ -35,7 +37,7 @@ public class GuiExternal {
         guiFrame.setLocation(savedPosX, savedPosY);
 
         /*
-            Stores number of features for iterating through them
+            Stores number of features for size assignment
          */
         int features = Feature.features.size();
 
@@ -78,7 +80,7 @@ public class GuiExternal {
 
             // TODO: User should press any key to assign this key to a feature
             // For now only allow the alphabet
-            String[] validKeyBinds = {"a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"};
+            String[] validKeyBinds = { "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z" };
 
             JComboBox<String> featureKeyBinds = new JComboBox<>(validKeyBinds);
 
@@ -100,6 +102,17 @@ public class GuiExternal {
                 System.out.println(feature.getFeatureName() + " was bound to " + keybind);
             });
 
+            /*
+                Apply an mouselistener for each button for checking if user pressed button with right mouse button
+             */
+            featureButton.addMouseListener(new MouseAdapter() {
+                @Override
+                public void mousePressed(MouseEvent e) {
+                    if (SwingUtilities.isRightMouseButton(e)) {
+                        new GuiFeatureSettings(feature);
+                    }
+                }
+            });
 
             /*
                 Add the current button and keybind to the frame
