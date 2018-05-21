@@ -5,6 +5,7 @@ import de.lasse.client.event.EventStart;
 import de.lasse.client.feature.FeatureFactory;
 import de.lasse.client.file.FeatureFile;
 import de.lasse.client.file.GuiFile;
+import de.lasse.client.helper.CombatHelper;
 import de.lasse.client.management.InputManager;
 import de.lasse.client.render.ClientRenderer;
 import de.lasse.client.render.FeatureRenderer;
@@ -25,6 +26,8 @@ public class Client {
     private final FeatureRenderer featureRenderer;
     private final InputManager inputManager;
     private final ClientRenderer clientRenderer;
+
+    private final CombatHelper combatHelper;
 
     public Client() {
 
@@ -50,6 +53,8 @@ public class Client {
 
         inputManager = new InputManager();
 
+        combatHelper = new CombatHelper();
+
         /* Set display title */
         Display.setTitle(NAME);
     }
@@ -60,5 +65,9 @@ public class Client {
 
     public File getClientDir() {
         return clientDir;
+    }
+
+    public CombatHelper getCombatHelper() {
+        return combatHelper;
     }
 }
