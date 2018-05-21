@@ -16,7 +16,11 @@ public class Sprint extends Feature {
 
     @EventTarget
     public void onUpdate(EventUpdate eventUpdate) {
-        mc.player.setSprinting(true);
+        if(!mc.player.isCollidedHorizontally) {
+            if (mc.gameSettings.keyBindForward.pressed) {
+                mc.player.setSprinting(true);
+            }
+        }
     }
 
     @Override
