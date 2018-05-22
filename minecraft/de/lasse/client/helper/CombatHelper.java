@@ -5,9 +5,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityCreature;
 import net.minecraft.entity.passive.EntityAnimal;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.ItemAxe;
-import net.minecraft.item.ItemPickaxe;
-import net.minecraft.item.ItemSword;
+import net.minecraft.item.*;
 
 public class CombatHelper {
 
@@ -45,9 +43,18 @@ public class CombatHelper {
         Bows are ignored at the moment because we are using this method for triggerbot and we don't
         wanna hit an entity with a bow
      */
-    private boolean heldsWeapon() {
+    public boolean heldsWeapon() {
         return mc.player.getHeldItemMainhand().getItem() instanceof ItemSword
                 || mc.player.getHeldItemMainhand().getItem() instanceof ItemAxe
                 || mc.player.getHeldItemMainhand().getItem() instanceof ItemPickaxe;
+    }
+
+    /*
+        Returns the attack cooldown of the given weapon
+     */
+    public long getCooldown(Item item) {
+        // TODO: Axes with different material have different cooldowns
+        // 250 is default cooldown
+        return item instanceof ItemSword ? 600 : item instanceof ItemAxe ? 1250 : item instanceof ItemPickaxe ? 850 : 250;
     }
 }

@@ -40,6 +40,8 @@ public class Client {
             clientDir.mkdirs();
         }
 
+        combatHelper = new CombatHelper();
+
         featureFactory = new FeatureFactory();
 
         new FeatureFile();
@@ -53,7 +55,6 @@ public class Client {
 
         inputManager = new InputManager();
 
-        combatHelper = new CombatHelper();
 
         /* Set display title */
         Display.setTitle(NAME);
