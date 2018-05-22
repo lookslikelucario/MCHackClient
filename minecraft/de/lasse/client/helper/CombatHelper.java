@@ -21,8 +21,9 @@ public class CombatHelper {
         hit the enemy
      */
     public boolean canAttack(Entity entity) {
-        return entity.getDistanceToEntity(mc.player) < 3.7
+        return ( entity.getDistanceToEntity(mc.player) < 3.7
                 && isEntityInstanceWanted(entity)
+                && !entity.isDead )
                 && mc.objectMouseOver.entityHit != null;
 
     }
