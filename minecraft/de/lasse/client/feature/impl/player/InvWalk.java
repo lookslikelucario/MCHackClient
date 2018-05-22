@@ -20,45 +20,30 @@ public class InvWalk extends Feature {
     }
 
     @EventTarget
-    public void update(EventUpdate event){
-        if(mc.currentScreen instanceof GuiInventory || mc.currentScreen instanceof GuiChest || mc.currentScreen instanceof GuiCrafting){
+    public void update(EventUpdate event) {
+        if (mc.currentScreen instanceof GuiInventory || mc.currentScreen instanceof GuiChest || mc.currentScreen instanceof GuiCrafting) {
 
-            //forward key
-            if(Keyboard.isKeyDown(mc.gameSettings.keyBindForward.getKeyCode())){
-                mc.gameSettings.keyBindForward.pressed = true;
-            }else{
-                mc.gameSettings.keyBindForward.pressed = false;
+            // forward key
+            mc.gameSettings.keyBindForward.pressed = Keyboard.isKeyDown(mc.gameSettings.keyBindForward.getKeyCode());
+
+            // backward key
+            mc.gameSettings.keyBindBack.pressed = Keyboard.isKeyDown(mc.gameSettings.keyBindBack.getKeyCode());
+
+            // left key
+            mc.gameSettings.keyBindLeft.pressed = Keyboard.isKeyDown(mc.gameSettings.keyBindLeft.getKeyCode());
+
+            // right key
+            mc.gameSettings.keyBindRight.pressed = Keyboard.isKeyDown(mc.gameSettings.keyBindRight.getKeyCode());
+
+            // jump key
+            if (Keyboard.isKeyDown(mc.gameSettings.keyBindJump.getKeyCode()) && mc.player.onGround) {
+                mc.player.jump();
             }
 
-            //backward key
-            if(Keyboard.isKeyDown(mc.gameSettings.keyBindBack.getKeyCode())){
-                mc.gameSettings.keyBindBack.pressed = true;
-            }else{
-                mc.gameSettings.keyBindBack.pressed = false;
-            }
+            // sneak key
+            mc.gameSettings.keyBindSneak.pressed = Keyboard.isKeyDown(mc.gameSettings.keyBindSneak.getKeyCode());
 
-            //left key
-            if(Keyboard.isKeyDown(mc.gameSettings.keyBindLeft.getKeyCode())){
-                mc.gameSettings.keyBindLeft.pressed = true;
-            }else{
-                mc.gameSettings.keyBindLeft.pressed = false;
-            }
-
-            //right key
-            if(Keyboard.isKeyDown(mc.gameSettings.keyBindRight.getKeyCode())){
-                mc.gameSettings.keyBindRight.pressed = true;
-            }else{
-                mc.gameSettings.keyBindRight.pressed = false;
-            }
-
-            //jump key
-            if(Keyboard.isKeyDown(mc.gameSettings.keyBindJump.getKeyCode())){
-                if(mc.player.onGround){
-                    mc.player.jump();
-                }
-            }
-
-            //rotation
+            // rotation
             if (Keyboard.isKeyDown(Keyboard.KEY_UP)) {
                 mc.player.rotationPitch -= rotationSpeed;
             }

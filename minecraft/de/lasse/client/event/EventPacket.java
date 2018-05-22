@@ -25,7 +25,7 @@ public class EventPacket extends EventCancellable {
         this.packet = packet;
     }
 
-    public enum PacketMode{
+    public enum PacketMode {
         SENDING,
         RECEIVING
     }

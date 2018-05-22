@@ -21,15 +21,15 @@ public class Velocity extends Feature {
     }
 
     @EventTarget
-    public void sendPacket(EventPacket event){
-        //checks if the packet comes from the server and is not sent by the client
-        if(event.getMode().equals(EventPacket.PacketMode.RECEIVING)){
+    public void sendPacket(EventPacket event) {
+        // checks if the packet comes from the server and is not sent by the client
+        if (event.getMode().equals(EventPacket.PacketMode.RECEIVING)) {
             Packet packet = event.getPacket();
-            //checks if the packet is a velocity packet
-            if(packet instanceof SPacketEntityVelocity){
+            // checks if the packet is a velocity packet
+            if (packet instanceof SPacketEntityVelocity) {
                 SPacketEntityVelocity velocityPacket = (SPacketEntityVelocity) packet;
-                //checks if the packets target is the player
-                if(mc.player.getEntityId() == velocityPacket.getEntityID()){
+                // checks if the packets target is the player
+                if (mc.player.getEntityId() == velocityPacket.getEntityID()) {
                     velocityPacket.setMotionX(velocityPacket.getMotionX() / 100 * horiModifier.getCurrentValue());
                     velocityPacket.setMotionZ(velocityPacket.getMotionZ() / 100 * horiModifier.getCurrentValue());
                     velocityPacket.setMotionY(velocityPacket.getMotionY() / 100 * vertModifier.getCurrentValue());
