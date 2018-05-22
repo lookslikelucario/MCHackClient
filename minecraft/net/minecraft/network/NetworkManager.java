@@ -1,7 +1,9 @@
 package net.minecraft.network;
 
+import com.darkmagician6.eventapi.EventManager;
 import com.google.common.collect.Queues;
 import com.google.common.util.concurrent.ThreadFactoryBuilder;
+import de.lasse.client.event.EventPacket;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelException;
@@ -148,7 +150,11 @@ public class NetworkManager extends SimpleChannelInboundHandler < Packet<? >>
         {
             try
             {
-                ((Packet<INetHandler>)p_channelRead0_2_).processPacket(this.packetListener);
+                EventPacket ep = new EventPacket(p_channelRead0_2_, EventPacket.PacketMode.RECEIVING);
+                EventManager.call(ep);
+                if(!ep.isCancelled()){
+                    ep.getPacket().processPacket(this.packetListener);
+                }
             }
             catch (ThreadQuickExitException var4)
             {
@@ -181,7 +187,11 @@ public class NetworkManager extends SimpleChannelInboundHandler < Packet<? >>
 
             try
             {
-                this.outboundPacketsQueue.add(new NetworkManager.InboundHandlerTuplePacketListener(packetIn, new GenericFutureListener[0]));
+                EventPacket ep = new EventPacket(packetIn, EventPacket.PacketMode.SENDING);
+                EventManager.call(ep);
+                if(!ep.isCancelled()){
+                    this.outboundPacketsQueue.add(new NetworkManager.InboundHandlerTuplePacketListener(ep.getPacket(), new GenericFutureListener[0]));
+                }
             }
             finally
             {
