@@ -83,7 +83,7 @@ public class GuiFeatureSettings {
 
     private void addBooleanField(ValueBoolean value) {
         JCheckBox checkBox = new JCheckBox(value.getValueName(), value.isEnabled());
-        checkBox.addActionListener(e -> value.setEnabled(checkBox.isEnabled()));
+        checkBox.addActionListener(e -> value.setEnabled(!value.isEnabled()));
         guiFrame.add(checkBox);
     }
 
